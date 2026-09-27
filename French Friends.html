@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>French Friends — Where Conversational French Becomes Fun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: 'var(--color-bg)', bgalt: 'var(--color-bg-alt)',
+          ink: 'var(--color-text)', inkmuted: 'var(--color-text-muted)',
+          royal: 'var(--color-blue)', royaldark: 'var(--color-blue-dark)',
+          coral: 'var(--color-coral)', coraldark: 'var(--color-coral-dark)',
+          card: 'var(--color-card-bg)'
+        },
+        fontFamily: { display: ['Fraunces','ui-serif','serif'], body: ['Inter','ui-sans-serif','system-ui','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+  :root{
+    --color-bg:#FFFDF8; --color-bg-alt:#EEF2FF; --color-text:#1F2430; --color-text-muted:#5B6472;
+    --color-blue:#2C4A9E; --color-blue-dark:#1D3470; --color-coral:#E8604C; --color-coral-dark:#C94A38;
+    --color-card-bg:#FFFFFF; --color-border:#E7E2D8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --color-bg:#161A22; --color-bg-alt:#1E2430; --color-text:#F1F0EA; --color-text-muted:#A9AFBC;
+      --color-blue:#8DA9EE; --color-blue-dark:#6C89D6; --color-coral:#F08770; --color-coral-dark:#F4A08C;
+      --color-card-bg:#1E232E; --color-border:#2D3341;
+    }
+  }
+  :root[data-theme="dark"]{
+    --color-bg:#161A22; --color-bg-alt:#1E2430; --color-text:#F1F0EA; --color-text-muted:#A9AFBC;
+    --color-blue:#8DA9EE; --color-blue-dark:#6C89D6; --color-coral:#F08770; --color-coral-dark:#F4A08C;
+    --color-card-bg:#1E232E; --color-border:#2D3341;
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:calc(4.5rem + env(safe-area-inset-top,0px));}
+  body{background:var(--color-bg); color:var(--color-text);}
+  .bcard{border-color:var(--color-border);}
+  .faq-answer{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-open .faq-answer{max-height:12rem;}
+  .faq-chevron{transition:transform .3s ease;}
+  .faq-open .faq-chevron{transform:rotate(180deg);}
+</style>
+</head>
+<body class="font-body text-ink">
+
+<header class="sticky top-0 z-50 backdrop-blur bg-bg/90 border-b bcard" style="padding-top:env(safe-area-inset-top,0px);">
+  <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-xl font-bold text-royal flex items-center gap-2">
+      <span aria-hidden="true">🇫🇷</span> French Friends
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#about" class="hover:text-royal">About</a>
+      <a href="#mentors" class="hover:text-royal">Mentors</a>
+      <a href="#details" class="hover:text-royal">Details</a>
+      <a href="#faq" class="hover:text-royal">FAQ</a>
+      <a href="#testimonials" class="hover:text-royal">Stories</a>
+    </div>
+    <a href="#register" class="hidden md:inline-block bg-coral hover:bg-coraldark text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-sm transition-colors">Register Now</a>
+    <button id="menuBtn" class="md:hidden text-ink" aria-label="Toggle menu" aria-expanded="false">
+      <svg id="menuIconOpen" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="menuIconClose" class="w-7 h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="hidden md:hidden px-5 pb-5 flex flex-col gap-4 text-sm font-medium border-t bcard pt-4">
+    <a href="#about">About</a>
+    <a href="#mentors">Mentors</a>
+    <a href="#details">Details</a>
+    <a href="#faq">FAQ</a>
+    <a href="#testimonials">Stories</a>
+    <a href="#register" class="bg-coral text-white text-center px-5 py-3 rounded-full font-semibold">Register Now</a>
+  </div>
+</header>
+
+<section id="top" class="max-w-6xl mx-auto px-5 pt-14 sm:pt-20 pb-20 grid md:grid-cols-2 gap-12 items-center">
+  <div>
+    <p class="inline-block bg-bgalt text-royal text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full mb-5">Grades 1–8 · North York</p>
+    <h1 class="font-display text-4xl sm:text-5xl font-bold leading-tight mb-5">Where Conversational French Becomes <span class="text-coral">Fun</span></h1>
+    <p class="text-inkmuted text-lg mb-8 max-w-md">A drop-off club run by high school French Immersion students — kids practice real conversational French through games, crafts, and one-on-one peer mentorship.</p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#register" class="bg-coral hover:bg-coraldark text-white px-7 py-3.5 rounded-full font-semibold shadow-md transition-colors">Register Now</a>
+      <a href="#about" class="border-2 bcard px-7 py-3.5 rounded-full font-semibold hover:bg-bgalt transition-colors">Learn More</a>
+    </div>
+  </div>
+  <div class="relative">
+    <svg viewBox="0 0 400 380" class="w-full max-w-sm mx-auto" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="190" r="175" fill="var(--color-bg-alt)"/>
+      <circle cx="115" cy="130" r="48" fill="var(--color-blue)"/>
+      <text x="115" y="144" font-size="34" text-anchor="middle">🎲</text>
+      <circle cx="288" cy="145" r="48" fill="var(--color-coral)"/>
+      <text x="288" y="159" font-size="34" text-anchor="middle">🎨</text>
+      <circle cx="200" cy="270" r="66" fill="var(--color-card-bg)" stroke="var(--color-border)" stroke-width="2"/>
+      <text x="200" y="262" font-family="Fraunces, serif" font-size="22" fill="var(--color-blue)" text-anchor="middle" font-weight="700">Bonjour!</text>
+      <text x="200" y="288" font-size="13" fill="var(--color-text-muted)" text-anchor="middle">let's play together</text>
+    </svg>
+  </div>
+</section>
+
+<section id="about" class="bg-bgalt py-20">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl mb-14">
+      <p class="text-coral font-semibold text-sm uppercase tracking-wide mb-2">Our Story</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-5">Founded by students, for students</h2>
+      <p class="text-inkmuted text-lg">French Friends started when a group of high school French Immersion students wanted to help younger kids fall in love with the language the way they did — through play, not worksheets. Every session is a casual, drop-off 1.5-hour block of games, crafts, and conversation, led by mentors who sat in the same seats not long ago.</p>
+    </div>
+    <h3 id="mentors" class="font-display text-2xl font-bold mb-8 scroll-mt-24">Meet the Mentors</h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-card rounded-2xl p-6 border bcard">
+        <div class="w-14 h-14 rounded-full bg-royal text-white flex items-center justify-center font-display font-bold text-lg mb-4">AL</div>
+        <h4 class="font-semibold text-lg mb-1">Alex</h4>
+        <p class="text-sm text-inkmuted mb-3">Loves running icebreaker games that get everyone talking.</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🩹 First Aid Certified</span>
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🗣️ Bilingual</span>
+        </div>
+      </div>
+
+      <div class="bg-card rounded-2xl p-6 border bcard">
+        <div class="w-14 h-14 rounded-full bg-coral text-white flex items-center justify-center font-display font-bold text-lg mb-4">SY</div>
+        <h4 class="font-semibold text-lg mb-1">Sydney</h4>
+        <p class="text-sm text-inkmuted mb-3">Brings the craft table to life with a new project each week.</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🩹 First Aid Certified</span>
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🗣️ Bilingual</span>
+        </div>
+      </div>
+
+      <div class="bg-card rounded-2xl p-6 border bcard">
+        <div class="w-14 h-14 rounded-full bg-royal text-white flex items-center justify-center font-display font-bold text-lg mb-4">MO</div>
+        <h4 class="font-semibold text-lg mb-1">Moriah</h4>
+        <p class="text-sm text-inkmuted mb-3">The go-to for patient one-on-one conversation practice.</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🩹 First Aid Certified</span>
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🗣️ Bilingual</span>
+        </div>
+      </div>
+
+      <div class="bg-card rounded-2xl p-6 border bcard">
+        <div class="w-14 h-14 rounded-full bg-coral text-white flex items-center justify-center font-display font-bold text-lg mb-4">WI</div>
+        <h4 class="font-semibold text-lg mb-1">William</h4>
+        <p class="text-sm text-inkmuted mb-3">Keeps game time fair, fun, and just the right amount of silly.</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🩹 First Aid Certified</span>
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🗣️ Bilingual</span>
+        </div>
+      </div>
+
+      <div class="bg-card rounded-2xl p-6 border bcard">
+        <div class="w-14 h-14 rounded-full bg-royal text-white flex items-center justify-center font-display font-bold text-lg mb-4">AN</div>
+        <h4 class="font-semibold text-lg mb-1">Anujin</h4>
+        <p class="text-sm text-inkmuted mb-3">Great with younger kids on their first day away from mom or dad.</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🩹 First Aid Certified</span>
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🗣️ Bilingual</span>
+        </div>
+      </div>
+
+      <div class="bg-card rounded-2xl p-6 border bcard">
+        <div class="w-14 h-14 rounded-full bg-coral text-white flex items-center justify-center font-display font-bold text-lg mb-4">KE</div>
+        <h4 class="font-semibold text-lg mb-1">Keira</h4>
+        <p class="text-sm text-inkmuted mb-3">Runs sign-in with a smile and always remembers everyone's name.</p>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🩹 First Aid Certified</span>
+          <span class="bg-bgalt text-royal px-2.5 py-1 rounded-full font-medium">🗣️ Bilingual</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="details" class="py-20 max-w-6xl mx-auto px-5 scroll-mt-16">
+  <div class="text-center max-w-2xl mx-auto mb-14">
+    <p class="text-coral font-semibold text-sm uppercase tracking-wide mb-2">Good to Know</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold">The Details</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-card border bcard rounded-2xl p-7">
+      <div class="w-12 h-12 rounded-xl bg-royal/10 flex items-center justify-center text-2xl mb-4">📍</div>
+      <h3 class="font-display font-bold text-xl mb-3">Location & Time</h3>
+      <p class="text-inkmuted text-sm leading-relaxed">Oriole Community Centre<br>2nd Floor Gallery Room<br>2975 Don Mills Rd, North York<br>Sessions run 1.5 hours per visit.</p>
+    </div>
+    <div class="bg-card border bcard rounded-2xl p-7">
+      <div class="w-12 h-12 rounded-xl bg-coral/10 flex items-center justify-center text-2xl mb-4">💰</div>
+      <h3 class="font-display font-bold text-xl mb-3">Cost</h3>
+      <p class="text-inkmuted text-sm leading-relaxed">$7 per child, per session. Includes a peanut-free snack. Advance e-transfer is required to secure your spot.</p>
+    </div>
+    <div class="bg-card border bcard rounded-2xl p-7">
+      <div class="w-12 h-12 rounded-xl bg-royal/10 flex items-center justify-center text-2xl mb-4">✅</div>
+      <h3 class="font-display font-bold text-xl mb-3">Guidelines</h3>
+      <p class="text-inkmuted text-sm leading-relaxed">Bring a water bottle. Sign-in and sign-out is mandatory. No drop-ins — advance registration only.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="bg-bgalt py-20 scroll-mt-16">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="text-center mb-12">
+      <p class="text-coral font-semibold text-sm uppercase tracking-wide mb-2">Questions</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold">Frequently Asked</h2>
+    </div>
+    <div class="space-y-4">
+
+      <div class="faq-item bg-card border bcard rounded-2xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5 font-semibold">
+          <span>How does it work?</span>
+          <svg class="faq-chevron w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-inkmuted text-sm pb-5 leading-relaxed">Parents drop kids off for a 1.5-hour session of games, crafts, and guided conversation in French, led by our high school mentors. Just sign in, and pick up when the session wraps up.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-card border bcard rounded-2xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5 font-semibold">
+          <span>Is it limited to French Immersion students?</span>
+          <svg class="faq-chevron w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-inkmuted text-sm pb-5 leading-relaxed">Not at all! Kids of every ability level are welcome, from total beginners to fluent speakers. Mentors adjust games and conversation to each child's comfort level.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-card border bcard rounded-2xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between text-left px-6 py-5 font-semibold">
+          <span>What if we can't make a session?</span>
+          <svg class="faq-chevron w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-inkmuted text-sm pb-5 leading-relaxed">Just let us know in advance and we're happy to arrange a makeup session. Since spots are limited and snacks are pre-ordered, we're unable to offer refunds for no-shows.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="py-20 max-w-6xl mx-auto px-5 scroll-mt-16">
+  <div class="text-center max-w-2xl mx-auto mb-14">
+    <p class="text-coral font-semibold text-sm uppercase tracking-wide mb-2">Stories</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold">What Families Say</h2>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="bg-card border bcard rounded-2xl p-6">
+      <p class="text-3xl text-coral leading-none mb-2">“</p>
+      <p class="text-sm text-inkmuted mb-4">The kids had so much fun they forgot they were even practicing French!</p>
+      <p class="text-sm font-semibold">— Parent, Grade 3</p>
+    </div>
+    <div class="bg-card border bcard rounded-2xl p-6">
+      <p class="text-3xl text-coral leading-none mb-2">“</p>
+      <p class="text-sm text-inkmuted mb-4">A great initiative — affordable, welcoming, and run by kids who genuinely care.</p>
+      <p class="text-sm font-semibold">— Parent, Grade 5</p>
+    </div>
+    <div class="bg-card border bcard rounded-2xl p-6">
+      <p class="text-3xl text-coral leading-none mb-2">“</p>
+      <p class="text-sm text-inkmuted mb-4">My mentor helped me talk without being scared of getting it wrong.</p>
+      <p class="text-sm font-semibold">— Student, Grade 6</p>
+    </div>
+    <div class="bg-card border bcard rounded-2xl p-6">
+      <p class="text-3xl text-coral leading-none mb-2">“</p>
+      <p class="text-sm text-inkmuted mb-4">Easy to sign up, easy to drop off, and my daughter asks to go every week.</p>
+      <p class="text-sm font-semibold">— Parent, Grade 1</p>
+    </div>
+  </div>
+</section>
+
+<section id="register" class="bg-royal py-16 text-center px-5 scroll-mt-16">
+  <h2 class="font-display text-white text-3xl sm:text-4xl font-bold mb-4">Ready to join the fun?</h2>
+  <p class="text-white/85 max-w-xl mx-auto mb-8">Spots are limited each session — secure your child's place with an advance e-transfer.</p>
+  <a href="mailto:FrenchFriends2023@gmail.com?subject=Register%20for%20French%20Friends" class="bg-coral hover:bg-coraldark text-white px-8 py-3.5 rounded-full font-semibold inline-block transition-colors">Email Us to Register</a>
+</section>
+
+<footer class="py-12 px-5" style="padding-bottom:calc(3rem + env(safe-area-inset-bottom,0px));">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6 text-sm text-inkmuted text-center">
+    <p class="font-display text-royal font-bold">French Friends</p>
+    <div class="flex flex-wrap gap-6 justify-center">
+      <a href="mailto:FrenchFriends2023@gmail.com" class="hover:text-royal">FrenchFriends2023@gmail.com</a>
+      <a href="https://instagram.com/FrenchFr1ends" target="_blank" rel="noopener" class="hover:text-royal">@FrenchFr1ends</a>
+    </div>
+    <p>© 2026 French Friends. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+  menuBtn.addEventListener('click', () => {
+    const willOpen = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(willOpen));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }));
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('faq-open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('faq-open'));
+      if (!wasOpen) item.classList.add('faq-open');
+    });
+  });
+</script>
+</body>
+</html>
